@@ -1,0 +1,31 @@
+lc = 1;
+L = 5;
+H = 10;
+a=0.5;
+b=0.02;
+rf=100;
+rt=300;
+Point(1) = {0,-H/2,0,lc};
+Point(2) = {L,-H/2,0,lc};
+Point(3) = {L,H/2,0,lc};
+Point(4) = {0,H/2,0,lc};
+Point(5) = {0,b/2,0,lc/rf};
+Point(6) = {a,b/2,0,lc/rt};
+Point(9) = {a,0,0,lc/rt};
+Point(10) = {a,-b/2,0,lc/rt};
+Point(8) = {0,-b/2,0,lc/rf};
+Line(1) = {1,2};
+Line(2) = {2,3};
+Line(3) = {3,4};
+Line(4) = {4,5};
+Line(5) = {5,6};
+Line(6) = {10,8};
+Circle(7) = {10,9,6};
+Line(8) = {8,1};
+
+Line Loop(103) = {2,3,4,5,-7,6,8,1};
+Plane Surface(10) = {103};
+
+Physical Point(100) = {4};  // upper right corner
+Physical Point(101) = {1};  // lower right corner
+Physical Surface(102) = {10}; // plate

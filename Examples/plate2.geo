@@ -1,0 +1,21 @@
+// Gmsh project created on Tue Nov 20 18:34:20 2007
+W=20;
+lc1=.2;
+lc2=.75;
+Point(1) = {0,0,0,lc1};
+Point(2) = {1,0,0,lc1};
+Point(3) = {0,1,0,lc1};
+Point(4) = {W,0,0,lc2};
+Point(5) = {W,10,0,lc2};
+Point(6) = {0,10,0,lc2};
+Line(1) = {2,4};
+Line(2) = {4,5};
+Line(3) = {5,6};
+Line(4) = {6,3};
+Circle(5) = {2,1,3};
+Line Loop(6) = {1,2,3,4,-5};
+Plane Surface(7) = {6};
+Physical Line(8) = {1};
+Physical Line(9) = {4};
+Physical Line(10) = {3};
+Physical Surface(11) = {7};
