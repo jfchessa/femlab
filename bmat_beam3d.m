@@ -44,6 +44,8 @@ nx=(x2-x1)*invL;
 ny=(y2-y1)*invL;
 nz=(z2-z1)*invL;
 
+% rev I think there was an extra 1/L here, JFC 12/5/24
+% B=invL*[ a*nx, a*ny, a*nz, b*nx, b*ny, b*nz,  ..
 a=6*xi*invL^2; b=(3*xi-1)*invL
-B=invL*[ a*nx, a*ny, a*nz, b*nx, b*ny, b*nz,  ...
+B=[ a*nx, a*ny, a*nz, b*nx, b*ny, b*nz,  ...
     -a*nx, -a*ny, -a*nz, -b*nx, -b*ny, -b*nz,];
