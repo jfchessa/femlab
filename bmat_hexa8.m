@@ -28,7 +28,7 @@ dNxi=0.125*[-1+eta+zeta-eta*zeta   -1+xi+zeta-xi*zeta  -1+xi+eta-xi*eta;
 
 J=coord'*dNxi;
 jac=det(J);
-dN=dNxi*inv(J);
+dN=dNxi/J;
 
 B=zeros(6,24);
 for i=1:8

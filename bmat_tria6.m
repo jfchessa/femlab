@@ -1,4 +1,4 @@
-function [B,A]=bmat_tria6(coord,xi)
+function [B,jac]=bmat_tria6(coord,xi)
 
 % function B=bmat_tria6(coord)
 %
@@ -7,9 +7,9 @@ function [B,A]=bmat_tria6(coord,xi)
 %
 %    coord: the nodal coordinates of the element (3x2 matrix)
 %
-% function [B,A]=bmat_tria3(coord)
+% function [B,jac]=bmat_tria3(coord)
 %
-% Computes the B matrix and the element area
+% Computes the B matrix and the jacobian (1/2 element area)
 %
 % Written by Jack Chessa, jfchessa@utep.edu
 
@@ -17,7 +17,7 @@ function [B,A]=bmat_tria6(coord,xi)
 eta=xi(2);
 xi=xi(1);
 
-dNdxi=[4*(xi+eta)-3   4*(xi+eta)-3;
+dNxi=[4*(xi+eta)-3   4*(xi+eta)-3;
              4*xi-1              0; 
                   0        4*eta-1;
      4*(1-eta-2*xi)          -4*xi;

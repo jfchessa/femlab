@@ -29,6 +29,6 @@ qwt = [ 0.30864197530864 0.49382716049383 0.30864197530864 ...
 ke=zeros(16,16);
 for q=1:9
   xi=qpt(q,:);
-  [B,jac]=bmat_tria6(coord,xi);
+  [B,jac]=bmat_quad8(coord,xi);
   ke = ke + B'*C*B*jac*thk*qwt(q);
 end

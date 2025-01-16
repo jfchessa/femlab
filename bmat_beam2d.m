@@ -36,6 +36,5 @@ s=(y2-y1)*invL;
 
 a=6*xi*invL^2; 
 
-% rev I think there was an extra 1/L here, JFC 12/5/24
-% B=invL*[ a*c, a*s, (3*xi-1)*invL, -a*c, -a*s, (1+3*xi)*invL ];
-B=[ a*c, a*s, (3*xi-1)*invL, -a*c, -a*s, (1+3*xi)*invL ];
+% rev I think there was an extra 1/L here, JFC 12/5/24 should check this
+B=[ -a*s, -a*c, (3*xi-1)*invL, a*s, a*c, (1+3*xi)*invL ];

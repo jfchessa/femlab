@@ -1,4 +1,4 @@
-function [B,A]=bmat_tetra10(coord,xi)
+function [B,jac]=bmat_tetra10(coord,xi)
 
 % function B=bmat_tetra10(coord)
 %
@@ -29,9 +29,9 @@ dNdxi = [ -(4*l1-1) -(4*l1-1) -(4*l1-1);
   4*l4 0.0 4*l2;
   0.0 4*l4 4*l3 ];
 
-J=coord'*dNxi;
+J=coord'*dNdxi;
 jac=det(J);
-dN=dNxi*inv(J);
+dN=dNdxi/J;
 
 B=zeros(6,30);
 for i=1:10

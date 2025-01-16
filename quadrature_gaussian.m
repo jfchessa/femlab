@@ -1,10 +1,10 @@
-function [ quadpoint, quadweight ] = quadrature_gaussian(quadorder,sdim)
+function [ quadpoint, quadweight ] = quadrature_gaussian(npts,sdim)
 
-% function [ QPTS, QWTS ] = QUADRATURE_GAUSSIAN(ORDER,DIM)
+% function [ QPTS, QWTS ] = QUADRATURE_GAUSSIAN(NPTS,DIM)
 %
 % Returns the quadrature points and weights for gaussian quadrature
 %
-% ORDER - The polynomial order of the integrand
+% NPTS - The polynomial order of the integrand
 % DIM - Spacial dimension to be integrated (default is 1)
 %
 % This is part of FEMLAB
@@ -13,13 +13,13 @@ function [ quadpoint, quadweight ] = quadrature_gaussian(quadorder,sdim)
 if ( nargin==1 )
     sdim=1;
 end
-
-if ( quadorder > 15 )  % check for valid quadrature order
-    disp('Order of quadrature to high for QUADRATURE_GAUSSIAN');
-    quadorder = 15;
-end
-
-npts=ceil( 0.5*(quadorder+1) );
+% 
+% if ( quadorder > 15 )  % check for valid quadrature order
+%     disp('Order of quadrature to high for QUADRATURE_GAUSSIAN');
+%     quadorder = 15;
+% end
+% 
+% npts=ceil( 0.5*(quadorder+1) );
 
 quadpoint=zeros(npts,1); quadweight=zeros(npts,1);
 

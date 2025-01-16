@@ -1,4 +1,4 @@
-function [B,A]=bmat_quad8(coord,xi)
+function [B,jac]=bmat_quad8(coord,xi)
 
 % function B=bmat_quad8(coord,xi)
 %
@@ -13,35 +13,16 @@ function [B,A]=bmat_quad8(coord,xi)
 %
 % Written by Jack Chessa, jfchessa@utep.edu
 
-
-r=0.5*(xi(1)+1.0)
-s=0.5*(xi(2)+1.0)
-
-dNdxi = [ ( s - 1.0  ) * ( - 4.0  * r - 2.0  * s + 3.0  ),...
-  ( r - 1.0  ) * ( - 4.0  * s - 2.0  * r + 3.0  );
-  ( s - 1.0  ) * ( - 4.0  * r + 2.0  * s + 1.0  ),...
-  r *       (   4.0  * s - 2.0  * r - 1.0  );
-  s         * (   4.0  * r + 2.0  * s - 3.0  ),...
-  r *       (   4.0  * s + 2.0  * r - 3.0  );
-  s         * (   4.0  * r - 2.0  * s - 1.0  ),...
-  ( r - 1.0  ) * ( - 4.0  * s + 2.0  * r + 1.0  );
-  4.0  * ( 2.0  * r - 1.0  )     * ( s - 1.0  ),...
-  4.0  * r * ( r - 1.0  );
-  - 4.0  *                     s * ( s - 1.0  ),...
-  - 4.0  * r               * ( 2.0  * s - 1.0  );
-  - 4.0  * ( 2.0  * r - 1.0  ) * s,...
-  - 4.0  * r * ( r - 1.0  );
-  4.0  *                     s * ( s - 1.0  ),...
-  4.0  *     ( r - 1.0  ) * ( 2.0  * s - 1.0  ) ];
+dNxi =dshape_quad8(xi);
 
 J=coord'*dNxi;
 jac=det(J);
-dN=dNxi*inv(J);
+dN=dNxi/J;
 
 B=zeros(3,16);
 for i=1:8
-  B(1,2*i-1)=dN(i,1);
-  B(2,2*i)=dN(i,2);
-  B(3,2*i-1)=dN(i,2);
-  B(3,2*i)=dN(i,1);
+  B(1,2*i-1) = dN(i,1);
+  B(2,2*i)   = dN(i,2);
+  B(3,2*i-1) = dN(i,2);
+  B(3,2*i)   = dN(i,1);
 end
